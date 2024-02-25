@@ -10,15 +10,21 @@ import { FormModel } from "./form.model";
 @Entity()
 export class UserModel {
     @PrimaryGeneratedColumn()
-    userId: number;
+    id: number;
 
     @Column()
-    id: string;
+    userId: string;
 
     @Column()
-    pw: string;
+    userPw: string;
 
-    @OneToOne(() => FormModel, (form) => form.id)
+    @Column()
+    gender: boolean;
+
+    @Column()
+    college: string;
+
+    @OneToOne(() => FormModel, (form) => form.form)
     @JoinColumn()
     form: FormModel;
 }

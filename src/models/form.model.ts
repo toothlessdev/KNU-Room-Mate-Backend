@@ -26,8 +26,10 @@ import { UserModel } from "./user.model";
 @Entity()
 export class FormModel {
     @PrimaryGeneratedColumn()
-    @OneToOne(() => UserModel, (user) => user.form)
     id: number;
+
+    @OneToOne(() => UserModel, (user) => user.form)
+    form: FormModel;
 
     @Column()
     title: string;
