@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import {
+    BadRequestException,
+    Injectable,
+    UnauthorizedException,
+} from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
 import {
     HASH_ROUNDS,
@@ -15,6 +19,11 @@ import { SignUpUserDto } from "./dto/signup-user.dto";
 export enum TokenType {
     ACCESS = "ACCESS",
     REFRESH = "REFRESH",
+}
+export interface IToken {
+    id: number;
+    userId: string;
+    type: TokenType;
 }
 
 @Injectable()
@@ -91,5 +100,33 @@ export class AuthService {
             userPw: hashedPw,
         });
         return this.getTokens(newUser.id, newUser.userId);
+    }
+
+    public async extractToken(headerAuthField: string) {
+        const splittedToken = headerAuthField.split(" ");
+        if (splittedToken.length !== 2)
+            throw new UnauthorizedException("잘못된 형식의 토큰입니다");
+        return splittedToken[1];
+    }
+
+    public async verifyToken(token: string): Promise<IToken> {
+        return this.jwtService.verify(token, {
+            secret: JWT_SECRET,
+        });
+    }
+
+    public async reissueToken(refreshToken: string) {
+        const decodedToken = await this.verifyToken(refreshToken);
+
+        if (decodedToken.type !== TokenType.REFRESH)
+            throw new BadRequestException(
+                "ACCESS TOKEN 재발급은 REFRESH TOKEN 으로만 가능합니다",
+            );
+
+        return this.signToken(
+            decodedToken.id,
+            decodedToken.userId,
+            TokenType.ACCESS,
+        );
     }
 }
