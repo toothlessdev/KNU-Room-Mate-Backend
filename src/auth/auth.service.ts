@@ -73,12 +73,12 @@ export class AuthService {
      * @returns 아이디 비밀번호 일치하는 UserModel
      */
     public async authenticateUser(userId: string, userPw: string) {
-        const user = await this.userService.readUserByUserId(userId);
+        const user = await this.userService.readUserByUserId(userId, true);
 
         if (!user)
             throw new UnauthorizedException("존재하지 않는 사용자입니다");
 
-        const isPwCorrect = bcrypt.compare(userPw, user.userPw);
+        const isPwCorrect = await bcrypt.compare(userPw, user.userPw);
         if (!isPwCorrect)
             throw new UnauthorizedException("비밀번호가 틀렸습니다");
 
@@ -103,16 +103,25 @@ export class AuthService {
     }
 
     public async extractToken(headerAuthField: string) {
-        const splittedToken = headerAuthField.split(" ");
-        if (splittedToken.length !== 2)
-            throw new UnauthorizedException("잘못된 형식의 토큰입니다");
-        return splittedToken[1];
+        try {
+            const splittedToken = headerAuthField.split(" ");
+            if (splittedToken.length !== 2) throw new Error();
+            return splittedToken[1];
+        } catch (err) {
+            throw new UnauthorizedException(
+                "토큰이 없거나 잘못된 형식의 토큰입니다",
+            );
+        }
     }
 
     public async verifyToken(token: string): Promise<IToken> {
-        return this.jwtService.verify(token, {
-            secret: JWT_SECRET,
-        });
+        try {
+            return this.jwtService.verify(token, {
+                secret: JWT_SECRET,
+            });
+        } catch (err) {
+            throw new BadRequestException("ACCESS 토큰이 만료되었습니다");
+        }
     }
 
     public async reissueToken(refreshToken: string) {

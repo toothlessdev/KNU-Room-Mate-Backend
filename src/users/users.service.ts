@@ -12,9 +12,10 @@ export class UsersService {
         private readonly userRepository: Repository<UserModel>,
     ) {}
 
-    public async readUserByUserId(userId: string) {
+    public async readUserByUserId(userId: string, withCredentials: boolean) {
         return this.userRepository.findOne({
             where: { userId },
+            select: { userPw: withCredentials },
         });
     }
 

@@ -8,6 +8,7 @@ const JWTModule = JwtModule.register({});
 
 @Module({
     imports: [JWTModule, UsersModule],
+    exports: [AuthService],
     controllers: [AuthController],
     providers: [AuthService],
 })

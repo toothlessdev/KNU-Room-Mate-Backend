@@ -23,6 +23,7 @@ export class TokenGuard implements CanActivate {
 
         const user = await this.usersService.readUserByUserId(
             decodedToken.userId,
+            false,
         );
 
         request.user = user;
