@@ -1,28 +1,14 @@
 import { Module } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
-import { TypeOrmModule } from "@nestjs/typeorm";
 import { FormModule } from "./form/form.module";
-import { UserModel } from "./models/user.model";
-import { FormModel } from "./models/form.model";
-import { CommentModel } from "./models/comment.model";
+import { AuthModule } from "./auth/auth.module";
+import { UsersModule } from "./users/users.module";
 
-const RootEntities = [UserModel, FormModel, CommentModel];
-
-const TypeOrmRootModule = TypeOrmModule.forRoot({
-    type: "postgres",
-    host: "localhost",
-    port: 5432,
-    username: "knu-room-mate",
-    password: "knu-room-mate",
-    database: "knu-room-mate",
-    synchronize: true,
-
-    entities: RootEntities,
-});
+import { TypeOrmRootModule } from "./config/database.config";
 
 @Module({
-    imports: [TypeOrmRootModule, FormModule],
+    imports: [TypeOrmRootModule, FormModule, AuthModule, UsersModule],
     controllers: [AppController],
     providers: [AppService],
 })
