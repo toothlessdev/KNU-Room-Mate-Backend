@@ -1,10 +1,4 @@
-import {
-    Column,
-    Entity,
-    JoinColumn,
-    OneToOne,
-    PrimaryGeneratedColumn,
-} from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 import { FormModel } from "./form.model";
 
 @Entity()
@@ -15,7 +9,7 @@ export class UserModel {
     @Column()
     userId: string;
 
-    @Column()
+    @Column({ select: false })
     userPw: string;
 
     @Column()
@@ -24,7 +18,6 @@ export class UserModel {
     @Column()
     college: string;
 
-    @OneToOne(() => FormModel, (form) => form.form)
-    @JoinColumn()
+    @OneToOne(() => FormModel, (form) => form.user)
     form: FormModel;
 }

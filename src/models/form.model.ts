@@ -16,6 +16,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
     OneToMany,
     OneToOne,
     PrimaryGeneratedColumn,
@@ -28,14 +29,16 @@ export class FormModel {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @OneToOne(() => UserModel, (user) => user.form)
-    form: FormModel;
-
     @Column()
     title: string;
 
     @OneToMany(() => CommentModel, (comment) => comment.form)
+    @JoinColumn()
     comments: FormModel[];
+
+    @OneToOne(() => UserModel, (user) => user.form)
+    @JoinColumn()
+    user: UserModel;
 
     @CreateDateColumn()
     createdAt: Date;
@@ -75,8 +78,6 @@ export class FormModel {
     })
     alarmType: AlarmType;
 
-    @Column()
-    showerTime: number;
     @Column()
     showerDuration: number;
 
