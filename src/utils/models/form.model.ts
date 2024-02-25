@@ -10,7 +10,7 @@ import {
     StudyPlace,
     WorkoutFrequency,
     WorkoutTime,
-} from "src/types/roommate.type";
+} from "src/utils/types/roommate.type";
 
 import {
     Column,

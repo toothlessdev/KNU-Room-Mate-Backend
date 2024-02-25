@@ -1,6 +1,9 @@
 # docker host os file
 /docker
 
+# env
+.env
+
 # compiled output
 /dist
 /node_modules

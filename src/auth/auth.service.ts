@@ -8,7 +8,7 @@ import {
     HASH_ROUNDS,
     JWT_EXPIRES_IN,
     JWT_SECRET,
-} from "src/config/auth.config";
+} from "src/utils/config/auth.config";
 import { UsersService } from "src/users/users.service";
 
 import * as bcrypt from "bcrypt";

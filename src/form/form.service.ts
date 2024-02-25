@@ -4,10 +4,10 @@ import {
     NotFoundException,
 } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { FormModel } from "src/models/form.model";
+import { FormModel } from "src/utils/models/form.model";
 import { Repository } from "typeorm";
 import { CreateFormDto } from "./dto/create-form.dto";
-import { UserModel } from "src/models/user.model";
+import { UserModel } from "src/utils/models/user.model";
 
 @Injectable()
 export class FormService {
