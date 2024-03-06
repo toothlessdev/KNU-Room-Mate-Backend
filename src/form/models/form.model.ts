@@ -10,19 +10,17 @@ import {
     StudyPlace,
     WorkoutFrequency,
     WorkoutTime,
-} from "src/utils/types/roommate.type";
+} from "src/form/types/form.type";
 
 import {
     Column,
     CreateDateColumn,
     Entity,
     JoinColumn,
-    OneToMany,
     OneToOne,
     PrimaryGeneratedColumn,
 } from "typeorm";
-import { CommentModel } from "./comment.model";
-import { UserModel } from "./user.model";
+import { UserModel } from "../../users/models/user.model";
 
 @Entity()
 export class FormModel {
@@ -31,10 +29,6 @@ export class FormModel {
 
     @Column()
     title: string;
-
-    @OneToMany(() => CommentModel, (comment) => comment.form)
-    @JoinColumn()
-    comments: FormModel[];
 
     @OneToOne(() => UserModel, (user) => user.form)
     @JoinColumn()

@@ -1,5 +1,5 @@
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { FormModel } from "./form.model";
+import { FormModel } from "../../form/models/form.model";
 
 @Entity()
 export class UserModel {

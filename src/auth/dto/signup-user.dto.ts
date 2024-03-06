@@ -3,4 +3,8 @@ export class SignUpUserDto {
     userPw: string;
     gender: boolean;
     college: string;
+
+    nickname: string;
+    birth: number;
+    studentId: number;
 }

@@ -10,7 +10,7 @@ import {
     StudyPlace,
     WorkoutFrequency,
     WorkoutTime,
-} from "src/utils/types/roommate.type";
+} from "src/form/types/form.type";
 
 export class CreateFormDto {
     title: string; // 제목

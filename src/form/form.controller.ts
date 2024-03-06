@@ -1,9 +1,18 @@
-import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
+import {
+    Body,
+    Controller,
+    Get,
+    Param,
+    Patch,
+    Post,
+    UseGuards,
+} from "@nestjs/common";
 import { FormService } from "./form.service";
 import { CreateFormDto } from "./dto/create-form.dto";
 import { AccessTokenGuard } from "src/auth/guard/token.guard";
-import { User } from "src/utils/decorators/user.decorator";
-import { UserModel } from "src/utils/models/user.model";
+import { User } from "src/users/decorators/user.decorator";
+import { UserModel } from "src/users/models/user.model";
+import { FormAccessGuard } from "./guard/form.guard";
 
 @Controller("forms")
 export class FormController {
@@ -27,4 +36,9 @@ export class FormController {
     ) {
         return this.formService.createForm(user, createFormDto);
     }
+
+    @Patch()
+    @UseGuards(AccessTokenGuard)
+    @UseGuards(FormAccessGuard)
+    public updateForm() {}
 }

@@ -1,9 +1,8 @@
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { CommentModel } from "src/utils/models/comment.model";
-import { FormModel } from "src/utils/models/form.model";
-import { UserModel } from "src/utils/models/user.model";
+import { FormModel } from "src/form/models/form.model";
+import { UserModel } from "src/users/models/user.model";
 
-export const RootEntities = [UserModel, FormModel, CommentModel];
+export const RootEntities = [UserModel, FormModel];
 
 export const TypeOrmRootModule = TypeOrmModule.forRootAsync({
     useFactory: () => ({

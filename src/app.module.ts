@@ -5,7 +5,7 @@ import { FormModule } from "./form/form.module";
 import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
 
-import { TypeOrmRootModule } from "./utils/config/database.config";
+import { TypeOrmRootModule } from "./config/database.config";
 import { ConfigModule } from "@nestjs/config";
 
 @Module({
