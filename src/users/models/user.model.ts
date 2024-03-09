@@ -18,6 +18,15 @@ export class UserModel {
     @Column()
     college: string;
 
+    @Column()
+    nickname: string;
+
+    @Column()
+    birth: number;
+
+    @Column()
+    studentId: number;
+
     @OneToOne(() => FormModel, (form) => form.user)
     form: FormModel;
 }

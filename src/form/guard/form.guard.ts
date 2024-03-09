@@ -7,7 +7,6 @@ export class FormAccessGuard implements CanActivate {
 
     public async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest();
-        request.user;
 
         return true;
     }
