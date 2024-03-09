@@ -7,8 +7,8 @@ import {
     InsectSensitive,
     PhoneCallType,
     ShareType,
-    SleepHabit,
     SleepLightType,
+    SmokeType,
     StudyPlace,
     WorkoutFrequency,
     WorkoutTime,
@@ -18,8 +18,6 @@ export class CreateFormDto {
     title: string; // 제목
     content: string; // 내용
 
-    mbti: string; // MBTI
-
     sleepTimeBegin: number; // 취침시간 (시작)
     sleepTimeEnd: number; // 취침시간 (끝)
     wakeupTimeBegin: number; // 기상시간 (시작)
@@ -28,7 +26,12 @@ export class CreateFormDto {
     sleepNoise: number; // 잠귀 (0~10)
     sleepLight: SleepLightType; // 취침등 타입
     alarmType: AlarmType; // 알람 타입
-    sleepHabit: SleepHabit[]; // 잠버릇
+
+    // 잠버릇
+    teethGrinding: boolean;
+    snoring: boolean;
+    sleepTalking: boolean;
+    sleepStruggle: boolean;
 
     heatSensitive: number; // 더위 (0~10)
     coldSensitive: number; // 추위 (0~10)
@@ -46,7 +49,7 @@ export class CreateFormDto {
     workoutFrequency: WorkoutFrequency; // 운동 빈도
     workoutTime: WorkoutTime; // 운동 시간대
     game: GameType; // 컴퓨터게임
-    smoke: boolean; // 흡연
+    smoke: SmokeType; // 흡연
     phoneCall: PhoneCallType; // 실내통화
     alcoholFrequency: number; // 음주 빈도
 }

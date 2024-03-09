@@ -18,7 +18,7 @@ export class FormService {
 
     public async readAllForms() {
         return this.formRepository.find({
-            select: ["id", "title", "createdAt", "birth", "studentId"],
+            select: ["id", "title", "createdAt"],
             relations: ["user"],
         });
     }

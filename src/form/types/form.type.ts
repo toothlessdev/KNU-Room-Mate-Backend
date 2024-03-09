@@ -81,3 +81,9 @@ export enum InsectSensitive {
     CATCHABLE = "CATCHABLE",
     LIKE = "LIKE",
 }
+
+export enum SmokeType {
+    NONE = "NONE",
+    ECIGAR = "ECIGAR",
+    CIGAR = "CIGAR",
+}

@@ -1,12 +1,14 @@
 import {
     AlarmType,
+    CleanFrequency,
     FriendInvitationType,
     GameType,
     HomeReturnFrequency,
-    PerfumeType,
+    InsectSensitive,
     PhoneCallType,
     ShareType,
     SleepLightType,
+    SmokeType,
     StudyPlace,
     WorkoutFrequency,
     WorkoutTime,
@@ -30,6 +32,9 @@ export class FormModel {
     @Column()
     title: string;
 
+    @Column()
+    content: string;
+
     @OneToOne(() => UserModel, (user) => user.form)
     @JoinColumn()
     user: UserModel;
@@ -38,22 +43,9 @@ export class FormModel {
     createdAt: Date;
 
     @Column()
-    birth: number;
-
-    @Column()
-    studentId: number;
-
-    @Column({
-        type: "varchar",
-        length: 4,
-    })
-    mbti: string;
-
-    @Column()
     sleepTimeBegin: number;
     @Column()
     sleepTimeEnd: number;
-
     @Column()
     wakeupTimeBegin: number;
     @Column()
@@ -61,88 +53,54 @@ export class FormModel {
 
     @Column()
     sleepNoise: number;
-    @Column({
-        type: "enum",
-        enum: SleepLightType,
-    })
+    @Column({ type: "enum", enum: SleepLightType })
     sleepLight: SleepLightType;
-    @Column({
-        type: "enum",
-        enum: AlarmType,
-    })
+    @Column({ type: "enum", enum: AlarmType })
     alarmType: AlarmType;
 
     @Column()
-    showerDuration: number;
+    teethGrinding: boolean;
+    @Column()
+    snoring: boolean;
+    @Column()
+    sleepTalking: boolean;
+    @Column()
+    sleepStruggel: boolean;
 
     @Column()
     heatSensitive: number;
     @Column()
     coldSensitive: number;
-
     @Column()
-    smellSensitive: number;
-    @Column({
-        type: "enum",
-        enum: PerfumeType,
-    })
-    perfumeType: PerfumeType;
-
+    cleanliness: number;
+    @Column({ type: "enum", enum: CleanFrequency })
+    cleanFrequency: CleanFrequency;
     @Column()
-    smoke: boolean;
-    @Column()
-    alcohol: number;
-    @Column()
-    alcoholFrequency: number;
-
-    @Column({
-        type: "enum",
-        enum: GameType,
-    })
-    game: GameType;
-
-    @Column({
-        type: "enum",
-        enum: PhoneCallType,
-    })
-    phoneCall: PhoneCallType;
-
-    @Column({
-        type: "enum",
-        enum: FriendInvitationType,
-    })
-    friendInvitation: FriendInvitationType;
-
-    @Column({
-        type: "enum",
-        enum: WorkoutFrequency,
-    })
-    workoutFrequency: WorkoutFrequency;
-
-    @Column({
-        type: "enum",
-        enum: WorkoutTime,
-    })
-    workoutTime: WorkoutTime;
-
-    @Column({
-        type: "enum",
-        enum: StudyPlace,
-    })
-    studyPlace: StudyPlace;
+    showerDuration: number;
+    @Column({ type: "enum", enum: InsectSensitive })
+    insectSensitive: InsectSensitive;
 
     @Column()
     relationship: number;
-
-    @Column({
-        type: "enum",
-        enum: HomeReturnFrequency,
-    })
+    @Column({ type: "enum", enum: ShareType })
+    shareType: ShareType;
+    @Column({ type: "enum", enum: FriendInvitationType })
+    friendInvitation: FriendInvitationType;
+    @Column({ type: "enum", enum: HomeReturnFrequency })
     homeReturnFrequency: HomeReturnFrequency;
 
-    @Column({
-        type: "enum",
-        enum: ShareType,
-    })
-    shareType: ShareType;
+    @Column({ type: "enum", enum: StudyPlace })
+    studyPlace: StudyPlace;
+    @Column({ type: "enum", enum: WorkoutFrequency })
+    workoutFrequency: WorkoutFrequency;
+    @Column({ type: "enum", enum: WorkoutTime })
+    workoutTime: WorkoutTime;
+    @Column({ type: "enum", enum: GameType })
+    game: GameType;
+    @Column({ type: "enum", enum: SmokeType })
+    smoke: SmokeType;
+    @Column({ type: "enum", enum: PhoneCallType })
+    phoneCall: PhoneCallType;
+    @Column()
+    alcoholFrequency: number;
 }
