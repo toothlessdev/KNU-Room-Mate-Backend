@@ -2,8 +2,8 @@ services:
     knu-room-mate-db:
         image: postgres:15
         restart: always
-        volumes:
-            - ./docker:/var/lib/postgresql/data
+        #        volumes:
+        #            - ./docker:/var/lib/postgresql/data
         ports:
             - "5432:5432"
         environment:
