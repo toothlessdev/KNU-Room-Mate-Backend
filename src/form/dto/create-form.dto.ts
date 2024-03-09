@@ -1,9 +1,10 @@
 import {
     AlarmType,
+    CleanFrequency,
     FriendInvitationType,
     GameType,
     HomeReturnFrequency,
-    PerfumeType,
+    InsectSensitive,
     PhoneCallType,
     ShareType,
     SleepHabit,
@@ -15,7 +16,7 @@ import {
 
 export class CreateFormDto {
     title: string; // 제목
-    content: string;
+    content: string; // 내용
 
     mbti: string; // MBTI
 
@@ -27,24 +28,25 @@ export class CreateFormDto {
     sleepNoise: number; // 잠귀 (0~10)
     sleepLight: SleepLightType; // 취침등 타입
     alarmType: AlarmType; // 알람 타입
-    sleepHabit: SleepHabit[];
+    sleepHabit: SleepHabit[]; // 잠버릇
 
     heatSensitive: number; // 더위 (0~10)
     coldSensitive: number; // 추위 (0~10)
     cleanliness: number; // 청소
-    cleanFrequency : 
+    cleanFrequency: CleanFrequency; // 청소주기
+    showerDuration: number; // 샤워 소요시간
+    insectSensitive: InsectSensitive; // 벌레 민감도
 
-    perfumeType: PerfumeType; // 향수 타입
-    smoke: boolean; // 흡연
-    alcohol: number; // 주량
-    alcoholFrequency: number; // 음주 빈도
-    game: GameType; // 컴퓨터게임
-    phoneCall: PhoneCallType; // 실내통화
+    relationship: number; // 룸메이트와의 관계
+    shareType: ShareType; // 룸메이트와 물건공유
     friendInvitation: FriendInvitationType; // 친구 초대
+    homeReturnFrequency: HomeReturnFrequency; // 본가 가는 주기
+
+    studyPlace: StudyPlace; // 공부 장소
     workoutFrequency: WorkoutFrequency; // 운동 빈도
     workoutTime: WorkoutTime; // 운동 시간대
-    studyPlace: StudyPlace; // 공부 장소
-    relationship: number; // 룸메이트와의 관계
-    homeReturnFrequency: HomeReturnFrequency; // 본가 가는 주기
-    shareType: ShareType; // 룸메이트와 물건공유
+    game: GameType; // 컴퓨터게임
+    smoke: boolean; // 흡연
+    phoneCall: PhoneCallType; // 실내통화
+    alcoholFrequency: number; // 음주 빈도
 }

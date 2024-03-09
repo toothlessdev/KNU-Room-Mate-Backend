@@ -11,12 +11,6 @@ export enum AlarmType {
     SINGLE = "SINGLE", // 하나만
 }
 
-export enum PerfumeType {
-    NONE = "NONE", // 안함
-    ALWAYS = "ALWAYS", // 매일
-    OFTEN = "OFTEN", // 가끔
-}
-
 export enum GameType {
     NONE = "NONE", // 안함
     ALWAYS = "ALWAYS", // 매일
@@ -64,4 +58,26 @@ export enum ShareType {
     NONE = "NONE", // 싫음
     PERMISSON = "PERMISSION", // 사전허락
     ALWAYS = "ALWAYS", // 상관없음
+}
+
+export enum SleepHabit {
+    NONE = "NONE",
+    SNORING = "SNORING",
+    GRINDING = "GRINDING",
+    SLEEPTALKING = "SLEEPTALKING",
+    STRUGGLE = "STRUGGLE",
+}
+
+export enum CleanFrequency {
+    WEEKLY = "WEEKLY",
+    DAILY = "DAILY",
+    TIMESAWEEK = "TIMESAWEEK",
+}
+
+export enum InsectSensitive {
+    HATE = "HATE",
+    UNCATCHABLE = "UNCATCHABLE",
+    NORMAL = "NORMAL",
+    CATCHABLE = "CATCHABLE",
+    LIKE = "LIKE",
 }
