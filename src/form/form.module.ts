@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { FormService } from "./form.service";
 import { FormController } from "./form.controller";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { FormModel } from "src/form/models/form.model";
+import { FormModel } from "src/form/entities/form.entity";
 import { AuthModule } from "src/auth/auth.module";
 import { UsersModule } from "src/users/users.module";
 

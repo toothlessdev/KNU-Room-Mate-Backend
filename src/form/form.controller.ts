@@ -11,7 +11,7 @@ import { FormService } from "./form.service";
 import { CreateFormDto } from "./dto/create-form.dto";
 import { AccessTokenGuard } from "src/auth/guard/token.guard";
 import { User } from "src/users/decorators/user.decorator";
-import { UserModel } from "src/users/models/user.model";
+import { UserModel } from "src/users/entities/user.entity";
 import { FormAccessGuard } from "./guard/form.guard";
 
 @Controller("forms")

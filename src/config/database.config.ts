@@ -1,6 +1,6 @@
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { FormModel } from "src/form/models/form.model";
-import { UserModel } from "src/users/models/user.model";
+import { FormModel } from "src/form/entities/form.entity";
+import { UserModel } from "src/users/entities/user.entity";
 
 export const RootEntities = [UserModel, FormModel];
 

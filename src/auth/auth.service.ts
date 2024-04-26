@@ -1,6 +1,7 @@
 import {
     BadRequestException,
     Injectable,
+    NotFoundException,
     UnauthorizedException,
 } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
@@ -75,8 +76,7 @@ export class AuthService {
     public async authenticateUser(userId: string, userPw: string) {
         const user = await this.userService.readUserByUserId(userId, true);
 
-        if (!user)
-            throw new UnauthorizedException("존재하지 않는 사용자입니다");
+        if (!user) throw new NotFoundException("존재하지 않는 사용자입니다");
 
         const isPwCorrect = await bcrypt.compare(userPw, user.userPw);
         if (!isPwCorrect)
@@ -106,6 +106,7 @@ export class AuthService {
         try {
             const splittedToken = headerAuthField.split(" ");
             if (splittedToken.length !== 2) throw new Error();
+            // isEmptyToken()
             return splittedToken[1];
         } catch (err) {
             throw new UnauthorizedException(

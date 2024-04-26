@@ -22,7 +22,7 @@ import {
     OneToOne,
     PrimaryGeneratedColumn,
 } from "typeorm";
-import { UserModel } from "../../users/models/user.model";
+import { UserModel } from "../../users/entities/user.entity";
 
 @Entity()
 export class FormModel {

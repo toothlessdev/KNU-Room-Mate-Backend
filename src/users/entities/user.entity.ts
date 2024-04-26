@@ -1,5 +1,5 @@
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { FormModel } from "../../form/models/form.model";
+import { FormModel } from "../../form/entities/form.entity";
 
 @Entity()
 export class UserModel {
@@ -13,7 +13,7 @@ export class UserModel {
     userPw: string;
 
     @Column()
-    gender: boolean;
+    gender: boolean; //TODO : enum
 
     @Column()
     college: string;
